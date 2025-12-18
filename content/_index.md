@@ -4,8 +4,8 @@ type: home
 ---
 
 <h1 class="hero-text">
-  Miguel Lopez<br>
-  <strong>Machine Learning Engineer · AI Systems · Applied Research</strong>
+  <strong> Machine Learning Engineer<br> 
+        <span class="hero-sub">AI Systems · Applied Research</span>
 </h1>
 
 ---
