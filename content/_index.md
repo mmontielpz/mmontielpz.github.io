@@ -44,6 +44,10 @@ type: home
 
 ## Background
 
-Experience across applied machine learning, system architecture, and research-oriented development.
+Experience across applied machine learning, AI systems, and research-oriented development, combining engineering rigor with research-informed decision making.
 
-This site documents selected projects, research notes, and ideas around building reliable AI systems.
+---
+
+## This site
+
+This site documents selected projects and research notes around building reliable AI systems.
