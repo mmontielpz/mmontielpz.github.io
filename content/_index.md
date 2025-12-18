@@ -1,7 +1,53 @@
 ---
-title: "Miguel Lopez"
+title: "Home"
+type: home
 ---
 
-Machine Learning Engineer focused on AI systems, applied research, and building reliable ML in production.
+<h1 class="hero-text">
+  <strong> Machine Learning Engineer<br> 
+        <span class="hero-sub">AI Systems · Applied Research</span>
+</h1>
 
-I work at the intersection of engineering rigor, model performance, and real-world constraints.
+---
+
+## Areas of work
+
+<div class="card-grid">
+
+  <div class="card card-emphasis">
+    <h3>Applied Machine Learning</h3>
+    <p>
+      Model development and evaluation with emphasis on robustness,
+      generalization, and decision-relevant metrics.
+    </p>
+  </div>
+
+  <div class="card card-emphasis">
+    <h3>AI Systems & Infrastructure</h3>
+    <p>
+      ML pipelines, model serving, and system integration built
+      for real operating environments.
+    </p>
+  </div>
+
+  <div class="card card-emphasis">
+    <h3>Research-Informed Engineering</h3>
+    <p>
+      Translating research ideas into systems that respect operational,
+      cost, and organizational constraints.
+    </p>
+  </div>
+
+</div>
+
+---
+
+## Background
+
+Experience across applied machine learning, AI systems, and research-oriented development, combining engineering rigor with research-informed decision making.
+
+---
+
+## This site
+
+This site documents selected projects and research notes around building reliable AI systems.
