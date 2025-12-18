@@ -1,0 +1,21 @@
+# Hugo build output
+/public/
+/resources/
+.hugo_build.lock
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Node / tooling (por si se agrega después)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env
+.env
+.env.*
