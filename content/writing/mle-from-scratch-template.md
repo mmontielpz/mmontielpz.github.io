@@ -1,6 +1,6 @@
 ---
 title: "MLE from scratch — <Topic>"
-date: 2025-XX-XX
+date: 2025-01-01
 tags: ["mle-from-scratch", "machine-learning"]
 draft: true
 ---
