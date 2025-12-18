@@ -6,6 +6,8 @@ theme = "PaperMod"
 enableRobotsTXT = true
 
 [params]
+  mainSections = []
+  showPostList = false
   defaultTheme = "dark"
   disableThemeToggle = true
   ShowReadingTime = false
@@ -13,6 +15,14 @@ enableRobotsTXT = true
   ShowPostNavLinks = false
   ShowBreadCrumbs = false
   ShowCodeCopyButtons = true
+  disableScrollToTop = false
+  hideMeta = false
+  showToc = false
+  showPostNavLinks = false
+  showBreadCrumbs = false
+  showReadingTime = false
+  showWordCount = false
+  showShareButtons = false
 
 [menu]
   [[menu.main]]
@@ -21,14 +31,9 @@ enableRobotsTXT = true
     weight = 1
 
   [[menu.main]]
-    name = "Projects"
-    url = "/projects/"
-    weight = 2
-
-  [[menu.main]]
     name = "Writing"
     url = "/writing/"
-    weight = 3
+    weight = 2
 
 [markup]
   [markup.goldmark]
