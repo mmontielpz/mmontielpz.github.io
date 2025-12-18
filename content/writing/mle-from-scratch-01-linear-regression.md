@@ -80,3 +80,34 @@ does not come from the model itself, but from data decisions, feature constructi
 and system constraints. Linear regression makes these boundaries explicit. Once
 the mechanics are understood, the critical questions shift away from optimization
 and toward how the model interacts with real data and real operating environments.
+
+## System implications
+
+In production systems, the behavior of linear regression is dominated by data and feature
+choices rather than optimization details. Feature scaling, collinearity, and outliers have
+an outsized impact on coefficient stability and error distribution. When features are poorly
+defined or weakly related to the target, linear regression does not compensate with capacity.
+It exposes the limitation immediately, often through unstable coefficients or uniformly high
+residuals across segments.
+
+Linear regression also highlights a class of failure modes that are easy to overlook.
+Underfitting tends to look stable in dashboards, predictions change smoothly, and metrics
+may degrade slowly. This makes evaluation beyond aggregate metrics essential. Residual
+analysis, segment level performance, and monitoring feature drift become critical. When
+these signals are ignored, systems continue to operate while delivering systematically
+biased or uninformative outputs
+
+## Takeaways
+
+- Linear regression is not a replacement for modern deep learning, but a powerful diagnostic tool for understanding data, assumptions, and system constraints.
+- Its simplicity exposes failure modes early, especially those related to weak signals, feature quality, and silent underfitting.
+- In production settings, the value of linear regression comes less from optimization and more from how clearly it reveals data and system limitations.
+
+## Repository 
+
+A full mathematical derivation, reference implementation, and supporting experiments are available in the companion repository. The repository expands
+on the concepts discussed here, including detailed notebooks, code examples, and analysis focused on practical machine learning engineering considerations.
+
+→ <a href="https://github.com/mmontielpz/mle-fundamentals-lab" target="_blank" rel="noopener noreferrer">
+github.com/mmontielpz/mle-fundamentals-lab
+</a>
