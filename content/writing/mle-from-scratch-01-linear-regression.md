@@ -108,6 +108,4 @@ biased or uninformative outputs
 A full mathematical derivation, reference implementation, and supporting experiments are available in the companion repository. The repository expands
 on the concepts discussed here, including detailed notebooks, code examples, and analysis focused on practical machine learning engineering considerations.
 
-→ <a href="https://github.com/mmontielpz/mle-fundamentals-lab/tree/main/modules/week_01_linear_regression" target="_blank" rel="noopener noreferrer">
-https://github.com/mmontielpz/mle-fundamentals-lab/tree/main/modules/week_01_linear_regression
-</a>
+{{< extlink "https://github.com/mmontielpz/mle-fundamentals-lab/tree/main/modules/week_01_linear_regression" >}}
