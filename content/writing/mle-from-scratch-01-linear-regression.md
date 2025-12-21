@@ -1,6 +1,6 @@
 ---
 title: "MLE from scratch #1 - Linear regression beyond the textbook"
-date: 2025-12-21
+date: 2025-12-20
 tags: ["mle-from-scratch", "machine-learning", "linear-regression"]
 draft: false
 ---
