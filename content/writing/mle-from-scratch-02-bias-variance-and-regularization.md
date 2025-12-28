@@ -1,6 +1,6 @@
 ---
 title: "MLE from scratch #2 – Bias, variance, and why training accuracy lies"
-date: 2025-12-27
+date: 2025-12-26
 tags: ["mle-from-scratch", "machine-learning", "bias-variance", "regularization"]
 draft: false
 ---
