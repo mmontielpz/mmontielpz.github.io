@@ -1,6 +1,6 @@
 ---
 title: "MLE from scratch #3 – Optimization, Gradient Descent, and why convergence is not enough"
-date: 2026-01-03
+date: 2026-01-01
 tags: ["mle-from-scratch", "machine-learning", "optimization", "gradient-descent"]
 draft: false
 ---
