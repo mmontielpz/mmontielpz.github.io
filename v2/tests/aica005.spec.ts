@@ -31,6 +31,9 @@ test("challenge, dependency diagram, workflow, and Codespaces handoff are clear"
   await expect(launch).toHaveAttribute("href", "https://codespaces.new/mmontielpz/ai-coding-agent-lab/tree/feat/aica005-django-codespaces-lab");
   await expect(launch).toHaveAttribute("target", "_blank");
   await expect(launch).toBeEnabled();
+  await expect(page.getByRole("link", { name: "Experiment A request" })).toHaveAttribute("href", "https://github.com/mmontielpz/ai-coding-agent-lab/blob/feat/aica005-django-codespaces-lab/experiments/A-unstructured.md");
+  await expect(page.getByRole("link", { name: "Experiment B request" })).toHaveAttribute("href", "https://github.com/mmontielpz/ai-coding-agent-lab/blob/feat/aica005-django-codespaces-lab/experiments/B-resource-aware.md");
+  await expect(page.getByText("the configurable prompt above is for a separate practice run", { exact: false })).toBeVisible();
   await page.context().route("https://codespaces.new/**", route => route.fulfill({ status: 200, body: "Codespaces launch destination" }));
   const [launchPopup] = await Promise.all([page.waitForEvent("popup"), launch.click()]);
   await expect(launchPopup.locator("body")).toHaveText("Codespaces launch destination");

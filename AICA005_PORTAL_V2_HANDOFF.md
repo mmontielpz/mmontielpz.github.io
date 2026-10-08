@@ -13,7 +13,7 @@ The portal prepares software engineers for a hands-on coding-agent experiment. I
 
 ## Learning journey and behavior
 
-The page moves from the dependency-ordering challenge through the agent system model, Discover → Plan → Execute → Verify → Report, practical do/avoid guidance, experiment configuration, and a Codespaces handoff. Context (Targeted/Broad), exploration (Bounded/Open), and verification (Focused + regression/Focused only) each change the policy summary, trade-offs, and exact prompt text. Choices persist in localStorage after hydration; Reset restores defaults. The prompt is selectable, copies through the secure Clipboard API when permitted, and downloads as UTF-8 text. Copy failure selects the text and explains manual copy.
+The page moves from the dependency-ordering challenge through the agent system model, Discover → Plan → Execute → Verify → Report, practical do/avoid guidance, experiment configuration, and a Codespaces handoff. Context (Targeted/Broad), exploration (Bounded/Open), and verification (Focused + regression/Focused only) each change the policy summary, trade-offs, and exact prompt text. The configurable prompt is for practice; controlled A/B runs use the fixed requests in the runtime repository. Choices persist in localStorage after hydration; Reset restores defaults. The prompt is selectable, copies through the secure Clipboard API when permitted, and downloads as UTF-8 text. Copy failure selects the text and explains manual copy.
 
 ## Qualification evidence
 
