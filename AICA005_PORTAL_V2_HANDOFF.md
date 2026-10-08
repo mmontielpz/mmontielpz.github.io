@@ -32,7 +32,7 @@ Playwright covers every policy, exact prompt changes, reload/reset, secure clipb
 
 The Codespaces laboratory is **Pending setup**. A runtime repository, pinned checkout, four contracts, verification commands, participant Copilot access, and a validated launch destination must be qualified before adding a link. The portal makes no claim about agent outcomes, token telemetry, cost, or Copilot availability. LAN HTTP is an insecure browser origin, so automatic clipboard access may be unavailable; manual selection and text download remain available. Browser storage may be disabled; in that case policy changes last for the page session only.
 
-The scoped portal PR also depends on the V2 foundation being integrated: remote `main` has no `v2/` app. Qualification above ran in the existing complete local V2 workspace. The portal-only branch cannot build until that foundation is available in its base.
+The portal Draft PR targets `release/v2`, which contains the independently qualified V2 foundation from Draft PR #7. The feature branch merges that foundation without rewriting history and builds from a clean checkout. Neither Draft PR has been merged into `main`, which remains the Hugo production source.
 
 ## Owner review and next mission
 
