@@ -23,7 +23,7 @@ export default function Page() {
       <ol className={styles.journey} aria-label="Learning journey"><li>Understand</li><li>Experiment</li><li>Launch</li><li>Compare</li><li>Learn</li></ol>
       <p className={styles.boundary}><strong>Efficiency = verified task outcome / resources consumed.</strong> This page teaches the experiment; GitHub Codespaces runs the actual lab. No agent runs or token measurements are performed here.</p>
       <a className={"button button-primary " + styles.startLink} href={launch} target="_blank" rel="noopener noreferrer">Launch GitHub Codespaces Lab <span aria-hidden="true">↗</span></a>
-      <p className={styles.note}><a href="#challenge">Understand the challenge first ↓</a></p>
+      <p className={styles.note}><a href={lab + "/blob/main/PARTICIPANT_QUICK_START.md"} target="_blank" rel="noopener noreferrer">Participant Quick Start ↗</a> · <a href="#challenge">Understand the challenge first ↓</a></p>
     </header>
 
     <section id="challenge" className={styles.section} aria-labelledby="challenge-heading">
