@@ -26,14 +26,14 @@ export default function Page() {
           <a className={"button button-primary " + styles.launch} href={launch} target="_blank" rel="noopener noreferrer">Launch Lab <span aria-hidden="true">↗</span></a>
           <a className={styles.quickStart} href={quickStart} target="_blank" rel="noopener noreferrer">Quick Start <span aria-hidden="true">↗</span></a>
         </div>
-        <p className={styles.access}>GitHub account, Codespaces and Copilot Agent access required. Open-source workshop; instructions are in Quick Start.</p>
+        <p className={styles.access}>GitHub account, Codespaces and Copilot Agent access required.</p>
       </header>
 
       <div className={styles.learningGrid}>
         <div className={styles.challenge}>
           <p className={styles.label}>The engineering challenge</p>
-          <h2>One ordering bug. A real verification task.</h2>
-          <p>Django widget Media can load an editor extension before its dependency. The <a href={workload.issue}>reported issue</a> also requires checking CSS order, deduplication, cycles and related widgets.</p>
+          <h2>Django Media ordering</h2>
+          <p>The <a href={workload.issue}>reported issue</a> can load an extension before its dependency; the fix must also preserve CSS order, deduplication and related widgets.</p>
           <figure className={styles.diagram} aria-label="Broken and correct JavaScript dependency order" data-diagram="dependency">
             <figcaption>Required: <code>editor.js</code> before <code>editor-extra.js</code></figcaption>
             <div className={styles.broken}><strong>Broken</strong><span><code>editor-extra.js</code><b aria-hidden="true">→</b><code>editor.js</code></span></div>
@@ -43,8 +43,8 @@ export default function Page() {
 
         <div className={styles.experiment}>
           <p className={styles.label}>The controlled experiment</p>
-          <h2>Same task. Two working strategies.</h2>
-          <p>Both runs start from <code>{workload.instance}</code> at the <a href={workload.widgets}>pinned baseline</a>, with the same model when available and the same verification. Each has an equal five-minute target, not an enforced timeout.</p>
+          <h2>Experiment A / Experiment B</h2>
+          <p>Both use <code>{workload.instance}</code>, the <a href={workload.widgets}>same baseline</a>, model when available, and verification.</p>
           <div className={styles.strategies} role="group" aria-label="Experiment A and B strategies">
             <div><strong>A · Normal</strong><p>Open-ended investigation and implementation.</p><a href={experimentA} target="_blank" rel="noopener noreferrer">Experiment A request ↗</a></div>
             <div><strong>B · Resource-aware</strong><p>Targeted search, bounded context and time for checks.</p><a href={experimentB} target="_blank" rel="noopener noreferrer">Experiment B request ↗</a></div>
@@ -52,7 +52,7 @@ export default function Page() {
         </div>
       </div>
 
-      <p className={styles.comparison}><strong>Compare verified outcomes</strong><span>Same baseline · Same tests · Correctness · Time · Tokens · Evidence</span><small>Compare resources only when measurements are reliable and outcomes are equivalent; B is not guaranteed to win.</small></p>
+      <p className={styles.comparison}><strong>Verify &amp; Compare</strong><span>Same baseline · Same tests · Correctness · Time · Measured tokens · Evidence</span></p>
     </section>
   </article>;
 }

@@ -23,8 +23,8 @@ test("compact workshop section leads to the public lab", async ({ page }, info) 
   await expect(page.getByRole("link", { name: "reported issue" })).toHaveAttribute("href", workload.issue);
   await expect(page.getByRole("link", { name: /Experiment A request/ })).toHaveAttribute("href", lab + "/blob/main/experiments/A-unstructured.md");
   await expect(page.getByRole("link", { name: /Experiment B request/ })).toHaveAttribute("href", lab + "/blob/main/experiments/B-resource-aware.md");
-  await expect(page.getByText("Same baseline · Same tests · Correctness · Time · Tokens · Evidence")).toBeVisible();
-  await expect(page.getByText("B is not guaranteed to win", { exact: false })).toBeVisible();
+  await expect(page.getByText("Verify & Compare")).toBeVisible();
+  await expect(page.getByText("Same baseline · Same tests · Correctness · Time · Measured tokens · Evidence")).toBeVisible();
   await expect(page.getByRole("link", { name: /Launch Lab/ })).toHaveCount(1);
   await expect(page.getByRole("link", { name: /Quick Start/ })).toHaveCount(1);
   expect(await page.locator("article").innerHTML()).not.toContain("mmontielpz/ai-coding-agent-lab");
