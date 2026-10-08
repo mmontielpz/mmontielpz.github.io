@@ -9,7 +9,7 @@ The portal prepares software engineers for a hands-on coding-agent experiment. I
 - Static Next.js export in `v2/`; route: `/writing/ai-coding-agents-token-optimization/`.
 - The page explains the task and workflow. `AgentResourceLab.tsx` owns the three policy controls, generated prompt, browser storage, copy, and text export. No backend, database, or agent runtime is present.
 - Authentic workload: SWE-bench Lite `django__django-11019`, Django base `93e892bb645b16ebaf287beb5fe7f3ffe8d10408`; [issue #30179](https://code.djangoproject.com/ticket/30179) and [reference PR #11019](https://github.com/django/django/pull/11019). The task concerns widget Media dependency ordering. The browser does not execute Django or reproduce benchmark results.
-- `TASK.md`, `AGENT.md`, `VERIFY.md`, and `REPORT.md` are **planned** runtime contracts, not files supplied by the portal.
+- `TASK.md`, `AGENT.md`, `VERIFY.md`, and `REPORT.md` are implemented in the separate [runtime Draft PR #1](https://github.com/mmontielpz/ai-coding-agent-lab/pull/1). They are not files supplied by the static portal and have not been qualified in a fresh GitHub Codespace.
 
 ## Learning journey and behavior
 
@@ -30,12 +30,12 @@ Playwright covers every policy, exact prompt changes, reload/reset, secure clipb
 
 ## Limits and Codespaces dependency
 
-The Codespaces laboratory is **Pending fresh Codespace qualification**. The existing `ai-coding-agent-lab` repository now has a Draft Django workshop branch with the pinned checkout, four contracts, and verification scripts. A local devcontainer boot passed, but a fresh GitHub Codespace and participant Copilot access have not been observed. The portal therefore shows an inactive launch control and makes no claim about agent outcomes, token telemetry, cost, or Copilot availability. LAN HTTP is an insecure browser origin, so automatic clipboard access may be unavailable; manual selection and text download remain available. Browser storage may be disabled; in that case policy changes last for the page session only.
+The Codespaces laboratory is **Pending fresh Codespace qualification**. The existing `ai-coding-agent-lab` repository has a Draft Django workshop branch with the pinned checkout, four contracts, and verification scripts. A clean local devcontainer boot, preflight, reset, verification, and evidence report passed their respective checks. The historical baseline correctly fails three issue-specific regression probes; it has not been fixed by an observed agent run. A fresh GitHub Codespace and participant Copilot access have not been observed. The portal therefore shows an inactive launch control and makes no claim about agent outcomes, token telemetry, cost, or Copilot availability. LAN HTTP is an insecure browser origin, so automatic clipboard access may be unavailable; manual selection and text download remain available. Browser storage may be disabled; in that case policy changes last for the page session only.
 
-The portal Draft PR targets `release/v2`, which contains the independently qualified V2 foundation from Draft PR #7. The feature branch merges that foundation without rewriting history and builds from a clean checkout. Neither Draft PR has been merged into `main`, which remains the Hugo production source.
+The existing portal feature branch targets `release/v2`, which contains the independently qualified V2 foundation from Draft PR #7. The scoped [Codespaces handoff Draft PR #8](https://github.com/mmontielpz/mmontielpz.github.io/pull/8) targets that portal feature branch. None of these Draft PRs has been merged into `main`, which remains the Hugo production source.
 
 ## Owner review and next mission
 
 From `v2/`, run `npm ci` if needed, then `npm run dev -- --hostname 0.0.0.0`. Open `http://localhost:3000/writing/ai-coding-agents-token-optimization/`. Inspect the diagrams at desktop and mobile widths, change all three policies, inspect the prompt, copy or download it, reload, reset, and follow the internal links to the pending handoff. For production output, run `npm run build` and preview `out/` with a local static server.
 
-Next mission: implement and qualify the separate Codespaces execution repository and its four contracts, then validate the launch destination and real verification evidence before enabling the handoff link. Do not infer a PASS from this educational portal.
+Next gate: boot a fresh GitHub Codespace from the runtime Draft PR branch, confirm post-create preflight and reset, run baseline verification, and check participant Copilot access. Then activate the verified launch destination in the portal handoff PR and update the isolated preview. Do not infer a task-level PASS from baseline verification or the educational portal.
