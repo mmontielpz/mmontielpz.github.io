@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 const lab = "https://github.com/mmontielpz/aica005-django-agent-workshop";
 const launch = "https://codespaces.new/mmontielpz/aica005-django-agent-workshop/tree/main";
+const quickStart = lab + "/blob/main/PARTICIPANT_QUICK_START.md";
 
 export default function Page() {
   return <article className={styles.page}>
@@ -19,11 +20,15 @@ export default function Page() {
       <Link className={styles.back} href="/writing/">← Writing</Link>
       <p className={styles.eyebrow}>AICA005 / engineering workshop</p>
       <h1>Can an AI coding agent solve a real issue <em>with fewer resources and a verified outcome?</em></h1>
-      <p className={styles.lead}>Compare a normal agent workflow with a resource-aware one on the same Django task. Learn to optimize engineering outcomes, not merely token counts.</p>
-      <ol className={styles.journey} aria-label="Learning journey"><li>Understand</li><li>Experiment</li><li>Launch</li><li>Compare</li><li>Learn</li></ol>
-      <p className={styles.boundary}><strong>Efficiency = verified task outcome / resources consumed.</strong> This page teaches the experiment; GitHub Codespaces runs the actual lab. No agent runs or token measurements are performed here.</p>
-      <a className={"button button-primary " + styles.startLink} href={launch} target="_blank" rel="noopener noreferrer">Launch GitHub Codespaces Lab <span aria-hidden="true">↗</span></a>
-      <p className={styles.note}><a href={lab + "/blob/main/PARTICIPANT_QUICK_START.md"} target="_blank" rel="noopener noreferrer">Participant Quick Start ↗</a> · <a href="#challenge">Understand the challenge first ↓</a></p>
+      <p className={styles.lead}>In this 60-minute workshop, compare a normal agent workflow with a resource-aware one on the same Django task. Learn to optimize verified engineering outcomes, not merely token counts.</p>
+      <ol className={styles.journey} aria-label="Learning journey"><li>Launch</li><li>Prepare</li><li>Experiment A</li><li>Experiment B</li><li>Compare</li><li>Cleanup</li></ol>
+      <p className={styles.boundary}><strong>Efficiency = Verified Task Outcome / Resources Consumed.</strong> For equivalent verified outcomes, compare tokens, time, and cost only when reliable, comparable evidence exists. This page performs no agent runs or measurements.</p>
+      <div className={styles.entryActions}>
+        <a className={"button button-primary " + styles.startLink} href={launch} target="_blank" rel="noopener noreferrer">Launch Lab <span aria-hidden="true">↗</span></a>
+        <a className={styles.secondaryLink} href={quickStart} target="_blank" rel="noopener noreferrer">Quick Start Guide <span aria-hidden="true">↗</span></a>
+        <a className={styles.supportLink} href={lab} target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">↗</span></a>
+      </div>
+      <p className={styles.note}>Launch opens GitHub Codespaces. A GitHub account and Codespaces access are required; Copilot Agent access is needed for the hands-on experiment. <a href="#challenge">Understand the challenge first ↓</a></p>
     </header>
 
     <section id="challenge" className={styles.section} aria-labelledby="challenge-heading">
@@ -42,7 +47,7 @@ export default function Page() {
     </section>
 
     <section id="experiment" className={styles.section} aria-labelledby="experiment-heading">
-      <div className={styles.sectionTitle}><span className={styles.kicker}>02 / THE EXPERIMENT</span><h2 id="experiment-heading">Change the strategy, keep the task constant.</h2><p>Run the fixed <a href={lab + "/blob/main/experiments/A-unstructured.md"}>Experiment A request</a>, save evidence, reset to the pinned baseline, then run the fixed <a href={lab + "/blob/main/experiments/B-resource-aware.md"}>Experiment B request</a>. Neither strategy is guaranteed to win.</p></div>
+      <div className={styles.sectionTitle}><span className={styles.kicker}>02 / THE EXPERIMENT</span><h2 id="experiment-heading">Change the strategy, keep the task constant.</h2><p>Use the fixed <a href={lab + "/blob/main/experiments/A-unstructured.md"}>Experiment A request</a>, export A evidence, then start a fresh Agent chat with the fixed <a href={lab + "/blob/main/experiments/B-resource-aware.md"}>Experiment B request</a>. Copilot runs the scripts and resets the pinned baseline before B. Both runs have the same five-minute target after preflight; it is a policy, not an enforced timeout. Neither strategy is guaranteed to win.</p></div>
       <div className={styles.abDiagram} role="group" aria-label="Controlled A and B experiment">
         <p><strong>Same starting conditions</strong><span>Task, Django commit, model, Agent mode, runtime, limits, and verification criteria</span></p>
         <div><p><strong>A · Normal workflow</strong><span>Open-ended engineering request; the agent chooses its exploration path.</span></p><p><strong>B · Resource-aware workflow</strong><span>Targeted search, bounded inspection, evidence checkpoints, and reserved verification.</span></p></div>
@@ -54,10 +59,10 @@ export default function Page() {
     </section>
 
     <section id="launch" className={styles.section + " " + styles.handoffSection} aria-labelledby="launch-heading">
-      <div className={styles.sectionTitle}><span className={styles.kicker}>03 / LAUNCH CODESPACES</span><h2 id="launch-heading">Run the workshop in the public laboratory.</h2><p>GitHub sign-in, Codespaces access, and Copilot Agent access may be required. The repository is public; a fresh Codespace at this publication commit has not yet been independently qualified.</p></div>
+      <div className={styles.sectionTitle}><span className={styles.kicker}>03 / LAUNCH CODESPACES</span><h2 id="launch-heading">Run the workshop in the public laboratory.</h2><p>Codespaces provides the configured development environment; Copilot Agent performs the engineering workflow. GitHub sign-in, Codespaces access, and Copilot Agent access are required. A fresh Codespace at this publication commit has not yet been independently qualified.</p></div>
       <div className={styles.handoffGrid}>
-        <div className={styles.comingNext}><div className={styles.githubHeading}><TechnologyMark name="github" /><span>GITHUB CODESPACES / DJANGO LAB</span></div><h3>Public lab</h3><a className={styles.launchLink} href={launch} target="_blank" rel="noopener noreferrer">Launch GitHub Codespaces Lab <span aria-hidden="true">↗</span></a><p className={styles.readiness}>Wait for <strong>LAB READY</strong> before starting. If readiness reports unexpected failures, stop and record them.</p><p>Use the <a href={lab + "/blob/main/README.md"}>public lab README</a> for commands, evidence export, and the task contracts.</p></div>
-        <div className={styles.handoffProcess}><h3>Participant checklist</h3><ol className={styles.handoffSteps}><li>Launch a fresh Codespace.</li><li>Wait for LAB READY and confirm the pinned baseline.</li><li>Open Copilot Chat in Agent mode.</li><li>Run A, verify the patch, and export evidence.</li><li>Reset the baseline.</li><li>Run B under the same conditions and export evidence.</li><li>Compare verified outcomes and available resource measurements.</li></ol></div>
+        <div className={styles.comingNext}><div className={styles.githubHeading}><TechnologyMark name="github" /><span>GITHUB CODESPACES / DJANGO LAB</span></div><h3>Public lab</h3><a className={styles.launchLink} href={launch} target="_blank" rel="noopener noreferrer">Launch Lab <span aria-hidden="true">↗</span></a><p className={styles.readiness}>Wait for <strong>LAB READY</strong> before starting. If readiness reports unexpected failures, stop and record them.</p><p>Follow the <a href={quickStart} target="_blank" rel="noopener noreferrer">Quick Start Guide</a>. The <a href={lab + "/blob/main/README.md"}>public lab README</a> has the contracts and commands for independent review.</p></div>
+        <div className={styles.handoffProcess}><h3>Participant checklist</h3><ol className={styles.handoffSteps}><li><strong>Launch:</strong> Open a fresh Codespace.</li><li><strong>Prepare:</strong> Wait for LAB READY and open Copilot Agent mode.</li><li><strong>Experiment A:</strong> Submit the fixed request; review and export A evidence.</li><li><strong>Experiment B:</strong> Start a new Agent chat without A attachments; keep the same model if available. Copilot resets Django and runs B.</li><li><strong>Compare:</strong> Inspect both patches, verification logs, and available measurements. Missing telemetry stays NOT_AVAILABLE.</li><li><strong>Cleanup:</strong> Export final evidence, then delete the Codespace when finished.</li></ol></div>
       </div>
     </section>
 
@@ -66,7 +71,7 @@ export default function Page() {
     <section id="learn" className={styles.section} aria-labelledby="learn-heading">
       <div className={styles.sectionTitle}><span className={styles.kicker}>05 / KEY TAKEAWAYS</span><h2 id="learn-heading">Decide from evidence, not from a smaller number.</h2></div>
       <div className={styles.checks}><details><summary>Why are fewer tokens insufficient without verification?</summary><p>A run can consume less while missing CSS, cycles, or regressions. Compare resources only alongside equivalent verified outcomes.</p></details><details><summary>When should an agent retrieve more context?</summary><p>When a missing dependency, contract, diagnostic, or test expectation could change its patch or verdict. Record why the extra read matters.</p></details><details><summary>What evidence supports a PASS decision?</summary><p>A reviewable diff, executed checks and results, adjacent regression coverage, and a clear account of failures or unavailable evidence.</p></details></div>
-      <p className={styles.endnote}><strong>Optimize the workflow, measure what is observable, and verify the outcome.</strong> This free educational workshop is separate from paid client engagements. No A/B performance result has been established here.</p>
+      <p className={styles.endnote}><strong>Optimize the workflow, measure what is observable, and verify the outcome.</strong> Harness engineering provides task contracts, repeatable checks, and traceable evidence. AI governance adds resource awareness, measurement integrity, and human review. This free educational workshop is separate from paid client engagements. No A/B performance result has been established here.</p>
     </section>
   </article>;
 }

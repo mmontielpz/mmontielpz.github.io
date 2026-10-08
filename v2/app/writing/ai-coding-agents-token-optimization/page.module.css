@@ -13,6 +13,12 @@
 .boundary { max-width: 57rem; margin: 0; padding: .8rem 1rem; border-left: 3px solid var(--accent); background: #18252a; color: var(--muted); font-size: .84rem; }
 .boundary strong { color: var(--foreground); }
 .startLink { display: inline-flex; gap: .75rem; margin-top: 1rem; }
+.entryActions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .85rem; margin-top: 1rem; }
+.entryActions .startLink { justify-content: center; margin-top: 0; }
+.secondaryLink { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .7rem 1rem; border: 1px solid var(--accent); border-radius: .15rem; color: var(--foreground); font-size: .85rem; font-weight: 700; text-decoration: none; }
+.secondaryLink:hover, .secondaryLink:focus-visible { background: #1b2b31; outline: 2px solid var(--accent); outline-offset: 2px; }
+.supportLink { display: inline-flex; align-items: center; gap: .35rem; padding: .7rem .3rem; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: underline; }
+.supportLink:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .section { padding-block: 2.6rem 3rem; border-top: 1px solid var(--border); scroll-margin-top: 1rem; }
 .sectionTitle { max-width: 60rem; margin-bottom: 1.45rem; }
 .sectionTitle h2 { max-width: 28ch; margin: .35rem 0 .5rem; font-size: clamp(1.9rem, 3vw, 2.75rem); font-weight: 500; line-height: 1.12; letter-spacing: -.045em; }
@@ -136,6 +142,7 @@
 .handoffSteps { display: grid; gap: .4rem; margin: 0; padding: 0; list-style: none; counter-reset: handoff; }
 .handoffSteps li { display: flex; align-items: center; gap: .8rem; padding: .5rem .8rem; border: 1px solid var(--border); background: #161e22; font-size: .85rem; counter-increment: handoff; }
 .handoffSteps li::before { content: counter(handoff, decimal-leading-zero); color: var(--accent); font-size: .72rem; font-weight: 700; }
+.handoffSteps strong { color: var(--accent); }
 .calculator { padding: 1.1rem; border: 1px solid var(--accent); background: #151f24; }
 .hypothetical { margin: 0 0 1rem; color: var(--accent); font-size: .72rem; font-weight: 800; letter-spacing: .07em; }
 .calculatorInputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
@@ -162,6 +169,8 @@
   .stage { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
 }
 @media (max-width: 580px) {
+  .entryActions { align-items: stretch; flex-direction: column; }
+  .supportLink { justify-content: center; }
   .hero h1 { font-size: clamp(2.5rem, 10vw, 3.3rem); }
   .section { padding-block: 2rem 2.3rem; }
   .assetRow { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
