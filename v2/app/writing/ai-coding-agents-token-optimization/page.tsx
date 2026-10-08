@@ -1,77 +1,65 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import TokenComparison from "./TokenComparison";
 import TechnologyMark from "../../../components/TechnologyMark";
 import { workload } from "../../../content/aica005";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "AI Coding Agents: Resource-Aware Engineering Workshop",
-  description: "Compare two coding-agent workflows on one real Django issue. Launch the public lab, verify both outcomes, and measure only what is observable.",
+  description: "Explore two coding-agent workflows on one real Django issue, then launch the public Codespaces lab.",
 };
 
 const lab = "https://github.com/mmontielpz/aica005-django-agent-workshop";
 const launch = "https://codespaces.new/mmontielpz/aica005-django-agent-workshop/tree/main";
 const quickStart = lab + "/blob/main/PARTICIPANT_QUICK_START.md";
+const experimentA = lab + "/blob/main/experiments/A-unstructured.md";
+const experimentB = lab + "/blob/main/experiments/B-resource-aware.md";
 
 export default function Page() {
   return <article className={styles.page}>
     <header className={styles.hero}>
       <Link className={styles.back} href="/writing/">← Writing</Link>
-      <p className={styles.eyebrow}>AICA005 / engineering workshop</p>
-      <h1>Can an AI coding agent solve a real issue <em>with fewer resources and a verified outcome?</em></h1>
-      <p className={styles.lead}>In this 60-minute workshop, compare a normal agent workflow with a resource-aware one on the same Django task. Learn to optimize verified engineering outcomes, not merely token counts.</p>
-      <ol className={styles.journey} aria-label="Learning journey"><li>Launch</li><li>Prepare</li><li>Experiment A</li><li>Experiment B</li><li>Compare</li><li>Cleanup</li></ol>
-      <p className={styles.boundary}><strong>Efficiency = Verified Task Outcome / Resources Consumed.</strong> For equivalent verified outcomes, compare tokens, time, and cost only when reliable, comparable evidence exists. This page performs no agent runs or measurements.</p>
+      <p className={styles.eyebrow}>AICA005 / 60-minute engineering workshop</p>
+      <h1>AI Coding Agents: <em>Resource-Aware Engineering</em></h1>
+      <p className={styles.lead}>Can an agent solve a real coding task while managing its resources and preserving a verified outcome?</p>
+      <p className={styles.boundary}><strong>Efficiency = Verified Task Outcome / Resources Consumed.</strong> Compare resources only alongside equivalent verified outcomes and reliable measurements.</p>
       <div className={styles.entryActions}>
         <a className={"button button-primary " + styles.startLink} href={launch} target="_blank" rel="noopener noreferrer">Launch Lab <span aria-hidden="true">↗</span></a>
         <a className={styles.secondaryLink} href={quickStart} target="_blank" rel="noopener noreferrer">Quick Start Guide <span aria-hidden="true">↗</span></a>
         <a className={styles.supportLink} href={lab} target="_blank" rel="noopener noreferrer">View Repository <span aria-hidden="true">↗</span></a>
       </div>
-      <p className={styles.note}>Launch opens GitHub Codespaces. A GitHub account and Codespaces access are required; Copilot Agent access is needed for the hands-on experiment. <a href="#challenge">Understand the challenge first ↓</a></p>
+      <p className={styles.note}>Hands-on participation requires a GitHub account, Codespaces access, and Copilot Agent access. <a href="#challenge">See the challenge ↓</a></p>
     </header>
 
     <section id="challenge" className={styles.section} aria-labelledby="challenge-heading">
-      <div className={styles.sectionTitle}><span className={styles.kicker}>01 / THE CHALLENGE</span><h2 id="challenge-heading">One small bug, several correctness checks.</h2><p>Django combines files needed by page widgets. In <a href={workload.issue}>issue #30179</a>, merging those lists can put an editor extension before the editor it depends on. An agent must investigate, propose a change, and check that related behavior still works.</p></div>
+      <div className={styles.sectionTitle}><span className={styles.kicker}>01 / THE CHALLENGE</span><h2 id="challenge-heading">One dependency-ordering bug.</h2><p>Django widget Media merges JavaScript and CSS assets. In <a href={workload.issue}>issue #30179</a>, a merge can load an editor extension before the editor it needs. A valid fix must also respect CSS ordering, deduplication, cycles, and related widgets.</p></div>
       <figure className={styles.assetDiagram} aria-labelledby="diagram-title" data-diagram="dependency">
-        <figcaption id="diagram-title">A JavaScript dependency that must survive merging</figcaption>
-        <div className={styles.assetRow}><span className={styles.diagramLabel}>Required order</span><div className={styles.assetFlow}><code>text-editor.js</code><span aria-hidden="true">→</span><code>text-editor-extras.js</code></div><strong>Editor loads first</strong></div>
-        <div className={styles.assetRow + " " + styles.badOrder}><span className={styles.diagramLabel}>Buggy merge</span><div className={styles.assetFlow}><code>text-editor-extras.js</code><span aria-hidden="true">→</span><code>color-picker.js</code><span aria-hidden="true">→</span><code>text-editor.js</code></div><strong>Breaks dependency</strong></div>
-        <div className={styles.assetRow + " " + styles.goodOrder}><span className={styles.diagramLabel}>One valid order</span><div className={styles.assetFlow}><code>text-editor.js</code><span aria-hidden="true">→</span><code>text-editor-extras.js</code><span aria-hidden="true">→</span><code>color-picker.js</code></div><strong>Preserves dependency</strong></div>
-        <p>The color picker is independent of the editor pair; only the editor-before-extension relationship is required in this example.</p>
+        <figcaption id="diagram-title">The editor must load before its extension</figcaption>
+        <div className={styles.assetRow + " " + styles.badOrder}><span className={styles.diagramLabel}>Broken merge</span><div className={styles.assetFlow}><code>editor-extra.js</code><span aria-hidden="true">→</span><code>editor.js</code></div><strong>Dependency broken</strong></div>
+        <div className={styles.assetRow + " " + styles.goodOrder}><span className={styles.diagramLabel}>Correct order</span><div className={styles.assetFlow}><code>editor.js</code><span aria-hidden="true">→</span><code>editor-extra.js</code></div><strong>Dependency preserved</strong></div>
+        <p>Real workload: <code>{workload.instance}</code> at the <a href={workload.widgets}>pinned Django baseline</a>. The diagram simplifies one ordering constraint; the lab checks the wider behavior.</p>
       </figure>
-      <div className={styles.challengeLower}>
-        <div><h3>Independent acceptance checks</h3><ul className={styles.criteria}><li>JavaScript dependency order</li><li>CSS ordering</li><li>Shared-asset deduplication</li><li>Cycle handling</li><li>Related widget and admin behavior</li></ul></div>
-        <aside className={styles.infoCard}><h3>Real workload</h3><p>Both experiments use one reproducible task. The workshop teaches agent engineering; Django is the test workload.</p><dl><div><dt>Task</dt><dd>{workload.instance}</dd></div><div><dt>Repository</dt><dd>{workload.repository}</dd></div><div><dt>Base</dt><dd><a href={workload.widgets}>{workload.base}</a></dd></div></dl></aside>
-      </div>
     </section>
 
     <section id="experiment" className={styles.section} aria-labelledby="experiment-heading">
-      <div className={styles.sectionTitle}><span className={styles.kicker}>02 / THE EXPERIMENT</span><h2 id="experiment-heading">Change the strategy, keep the task constant.</h2><p>Use the fixed <a href={lab + "/blob/main/experiments/A-unstructured.md"}>Experiment A request</a>, export A evidence, then start a fresh Agent chat with the fixed <a href={lab + "/blob/main/experiments/B-resource-aware.md"}>Experiment B request</a>. Copilot runs the scripts and resets the pinned baseline before B. Both runs have the same five-minute target after preflight; it is a policy, not an enforced timeout. Neither strategy is guaranteed to win.</p></div>
+      <div className={styles.sectionTitle}><span className={styles.kicker}>02 / THE EXPERIMENT</span><h2 id="experiment-heading">Same task. Two working strategies.</h2><p>A and B share the Django baseline, model when available, runtime, and verification. Each has the same five-minute target after preflight; it is a policy, not an enforced timeout.</p></div>
       <div className={styles.abDiagram} role="group" aria-label="Controlled A and B experiment">
-        <p><strong>Same starting conditions</strong><span>Task, Django commit, model, Agent mode, runtime, limits, and verification criteria</span></p>
-        <div><p><strong>A · Normal workflow</strong><span>Open-ended engineering request; the agent chooses its exploration path.</span></p><p><strong>B · Resource-aware workflow</strong><span>Targeted search, bounded inspection, evidence checkpoints, and reserved verification.</span></p></div>
-        <p><strong>Same independent gate</strong><span>Review each patch and run the issue, media, and admin checks before comparing resources.</span></p>
+        <div><p><strong>A · Normal workflow</strong><span>Open-ended investigation and implementation. <a href={experimentA} target="_blank" rel="noopener noreferrer">Read the fixed A request ↗</a></span></p><p><strong>B · Resource-aware</strong><span>Targeted search, bounded context, and time reserved for checks. <a href={experimentB} target="_blank" rel="noopener noreferrer">Read the fixed B request ↗</a></span></p></div>
+        <p><strong>Same verification gate</strong><span>Review each patch and executed issue, media, and admin checks before interpreting resource use.</span></p>
       </div>
-      <ol className={styles.systemFlow} aria-label="Engineering system" data-diagram="agent"><li><strong>Task</strong><span>Same issue</span></li><li><strong>Agent</strong><span>Chooses actions</span></li><li><strong>Tools / context</strong><span>Reads and edits</span></li><li><strong>Candidate patch</strong><span>Reviewable diff</span></li><li className={styles.verificationGate}><strong>Verification</strong><span>Independent checks</span></li><li><strong>Evidence</strong><span>Results and limits</span></li></ol>
-      <p className={styles.flowCaption}>Context is information available to one model request. Tokens, tool calls, and elapsed time measure different resources. Record each only when observable; Copilot may not report exact tokens.</p>
-      <details className={styles.detail}><summary>One useful resource decision</summary><p>Search relevant symbols before reading whole files. Retrieve more context when a missing dependency, test expectation, or cycle behavior could change the patch. Reserve time for verification instead of spending the whole run exploring.</p></details>
+      <div className={styles.comparisonGrid} aria-label="Comparison dimensions">
+        <div><strong>Correctness</strong><span>Which required checks passed?</span></div>
+        <div><strong>Time</strong><span>What elapsed time was observed?</span></div>
+        <div><strong>Tokens</strong><span>Are comparable provider totals available?</span></div>
+        <div><strong>Evidence</strong><span>Can the patch and logs be reviewed?</span></div>
+      </div>
+      <p className={styles.flowCaption}>Unavailable telemetry stays <strong>NOT_AVAILABLE</strong>. Fewer tokens alone do not establish a better solution, and B is not guaranteed to win.</p>
     </section>
 
-    <section id="launch" className={styles.section + " " + styles.handoffSection} aria-labelledby="launch-heading">
-      <div className={styles.sectionTitle}><span className={styles.kicker}>03 / LAUNCH CODESPACES</span><h2 id="launch-heading">Run the workshop in the public laboratory.</h2><p>Codespaces provides the configured development environment; Copilot Agent performs the engineering workflow. GitHub sign-in, Codespaces access, and Copilot Agent access are required. A fresh Codespace at this publication commit has not yet been independently qualified.</p></div>
-      <div className={styles.handoffGrid}>
-        <div className={styles.comingNext}><div className={styles.githubHeading}><TechnologyMark name="github" /><span>GITHUB CODESPACES / DJANGO LAB</span></div><h3>Public lab</h3><a className={styles.launchLink} href={launch} target="_blank" rel="noopener noreferrer">Launch Lab <span aria-hidden="true">↗</span></a><p className={styles.readiness}>Wait for <strong>LAB READY</strong> before starting. If readiness reports unexpected failures, stop and record them.</p><p>Follow the <a href={quickStart} target="_blank" rel="noopener noreferrer">Quick Start Guide</a>. The <a href={lab + "/blob/main/README.md"}>public lab README</a> has the contracts and commands for independent review.</p></div>
-        <div className={styles.handoffProcess}><h3>Participant checklist</h3><ol className={styles.handoffSteps}><li><strong>Launch:</strong> Open a fresh Codespace.</li><li><strong>Prepare:</strong> Wait for LAB READY and open Copilot Agent mode.</li><li><strong>Experiment A:</strong> Submit the fixed request; review and export A evidence.</li><li><strong>Experiment B:</strong> Start a new Agent chat without A attachments; keep the same model if available. Copilot resets Django and runs B.</li><li><strong>Compare:</strong> Inspect both patches, verification logs, and available measurements. Missing telemetry stays NOT_AVAILABLE.</li><li><strong>Cleanup:</strong> Export final evidence, then delete the Codespace when finished.</li></ol></div>
-      </div>
-    </section>
-
-    <TokenComparison />
-
-    <section id="learn" className={styles.section} aria-labelledby="learn-heading">
-      <div className={styles.sectionTitle}><span className={styles.kicker}>05 / KEY TAKEAWAYS</span><h2 id="learn-heading">Decide from evidence, not from a smaller number.</h2></div>
-      <div className={styles.checks}><details><summary>Why are fewer tokens insufficient without verification?</summary><p>A run can consume less while missing CSS, cycles, or regressions. Compare resources only alongside equivalent verified outcomes.</p></details><details><summary>When should an agent retrieve more context?</summary><p>When a missing dependency, contract, diagnostic, or test expectation could change its patch or verdict. Record why the extra read matters.</p></details><details><summary>What evidence supports a PASS decision?</summary><p>A reviewable diff, executed checks and results, adjacent regression coverage, and a clear account of failures or unavailable evidence.</p></details></div>
-      <p className={styles.endnote}><strong>Optimize the workflow, measure what is observable, and verify the outcome.</strong> Harness engineering provides task contracts, repeatable checks, and traceable evidence. AI governance adds resource awareness, measurement integrity, and human review. This free educational workshop is separate from paid client engagements. No A/B performance result has been established here.</p>
+    <section id="lab" className={styles.section + " " + styles.handoffSection} aria-labelledby="lab-heading">
+      <div className={styles.sectionTitle}><span className={styles.kicker}>03 / HANDS-ON LAB</span><h2 id="lab-heading">Take the experiment into Codespaces.</h2><p>Codespaces prepares the environment. Copilot Agent runs the fixed requests and scripts; you review the evidence and make the engineering decision.</p></div>
+      <ol className={styles.systemFlow} aria-label="Lab workflow" data-diagram="lab"><li><strong>Launch</strong><span>Wait for LAB READY</span></li><li><strong>A</strong><span>Fresh chat; export evidence A</span></li><li><strong>B</strong><span>Fresh chat; reset and export B</span></li><li><strong>Compare</strong><span>Check outcomes and available resources</span></li><li><strong>Cleanup</strong><span>Export, then delete the Codespace</span></li></ol>
+      <div className={styles.labHandoff}><div className={styles.githubHeading}><TechnologyMark name="github" /><span>PUBLIC GITHUB CODESPACES LAB</span></div><a className={styles.launchLink} href={launch} target="_blank" rel="noopener noreferrer">Launch Lab <span aria-hidden="true">↗</span></a><p>Use the <a href={quickStart} target="_blank" rel="noopener noreferrer">Quick Start Guide</a> for exact steps. This page does not run agents or collect telemetry; the open-source workshop is separate from paid client work.</p></div>
     </section>
   </article>;
 }

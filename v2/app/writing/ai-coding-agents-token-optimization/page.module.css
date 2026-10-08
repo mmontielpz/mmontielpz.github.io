@@ -46,7 +46,7 @@
 .infoCard dl div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: .5rem; }
 .infoCard dt { color: var(--muted); font-size: .77rem; }
 .infoCard dd { margin: 0; font-size: .8rem; overflow-wrap: anywhere; }
-.systemFlow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .35rem; margin: 0; padding: 0; list-style: none; counter-reset: system; }
+.systemFlow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .35rem; margin: 0; padding: 0; list-style: none; counter-reset: system; }
 .systemFlow li { position: relative; min-width: 0; padding: 1rem .8rem; border: 1px solid var(--border); background: #161e22; counter-increment: system; }
 .systemFlow li::before { content: counter(system, decimal-leading-zero); display: block; margin-bottom: .45rem; color: var(--accent); font-size: .68rem; font-weight: 700; }
 .systemFlow li strong { display: block; font-size: .89rem; line-height: 1.2; }
@@ -81,6 +81,11 @@
 .abDiagram strong, .abDiagram span { display: block; }
 .abDiagram strong { color: var(--accent); font-size: .83rem; }
 .abDiagram span { margin-top: .2rem; color: var(--muted); font-size: .82rem; }
+.comparisonGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem; margin-top: .8rem; }
+.comparisonGrid div { padding: .8rem 1rem; border: 1px solid var(--border); background: #161e22; }
+.comparisonGrid strong, .comparisonGrid span { display: block; }
+.comparisonGrid strong { color: var(--accent); font-size: .83rem; }
+.comparisonGrid span { margin-top: .25rem; color: var(--muted); font-size: .8rem; }
 .practiceRow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
 .practiceRows { display: grid; gap: .45rem; }
 .practiceRow p { margin: 0; padding: .75rem .85rem; border: 1px solid var(--border); background: #161e22; font-size: .85rem; }
@@ -127,6 +132,9 @@
 .handoffGrid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: .8rem; }
 .handoffSection { margin-top: 1.1rem; padding-inline: 1.15rem; border: 1px solid var(--accent); background: linear-gradient(135deg, #17272d, #111a1e 65%); }
 .comingNext { padding: 1.3rem; border: 1px solid var(--accent); background: #1b2b31; }
+.labHandoff { margin-top: 1rem; padding: 1.1rem 1.25rem; border: 1px solid var(--accent); background: #1b2b31; }
+.labHandoff .launchLink { max-width: 19rem; }
+.labHandoff p { max-width: 55rem; margin: .75rem 0 0; color: var(--muted); font-size: .85rem; }
 .githubHeading { display: flex; align-items: center; gap: .55rem; color: var(--accent); font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
 .comingNext h3 { margin: .4rem 0 .6rem; font-size: 1.45rem; }
 .comingNext p { margin: 0 0 1rem; color: var(--muted); font-size: .88rem; }
@@ -165,7 +173,7 @@
   .challengeLower, .configLayout, .handoffGrid { grid-template-columns: minmax(0, 1fr); }
   .systemFlow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .systemFlow li:nth-child(3)::after { display: none; }
-  .glossary, .contractGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .glossary, .contractGrid, .comparisonGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stage { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
 }
 @media (max-width: 580px) {
@@ -175,7 +183,8 @@
   .section { padding-block: 2rem 2.3rem; }
   .assetRow { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
   .assetRow strong { grid-column: auto; }
-  .criteria, .glossary, .contractGrid, .checks, .stage dl, .abDiagram > div, .calculatorInputs { grid-template-columns: minmax(0, 1fr); }
+  .criteria, .glossary, .contractGrid, .checks, .stage dl, .abDiagram > div, .calculatorInputs, .comparisonGrid { grid-template-columns: minmax(0, 1fr); }
+  .labHandoff .launchLink { max-width: none; }
   .systemFlow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .systemFlow li:nth-child(3)::after { display: block; }
   .systemFlow li:nth-child(even)::after { display: none; }
