@@ -10,7 +10,7 @@ const noOverflow = async (page: import("@playwright/test").Page) => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
 };
 
-test("challenge, dependency diagram, workflow, and planned handoff are clear", async ({ page }, info) => {
+test("challenge, dependency diagram, workflow, and Codespaces handoff are clear", async ({ page }, info) => {
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
@@ -26,10 +26,16 @@ test("challenge, dependency diagram, workflow, and planned handoff are clear", a
   await expect(page.getByRole("list", { name: "Engineering system" }).locator("li")).toHaveCount(6);
   await expect(page.locator("h3").filter({ hasText: /^(Discover|Plan|Execute|Verify|Report)$/ })).toHaveCount(5);
   await expect(page.getByRole("heading", { name: "GitHub Codespaces Laboratory" })).toBeVisible();
-  await expect(page.getByText("Hands-on environment: Pending setup")).toBeVisible();
-  await expect(page.getByText("Pending fresh Codespace qualification.", { exact: false })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Launch GitHub Codespaces Lab" })).toBeDisabled();
-  await expect(page.locator('a[href*="codespaces/new"]')).toHaveCount(0);
+  await expect(page.getByText("Hands-on environment: Ready to launch")).toBeVisible();
+  const launch = page.getByRole("link", { name: /Launch GitHub Codespaces Lab/ });
+  await expect(launch).toHaveAttribute("href", "https://codespaces.new/mmontielpz/ai-coding-agent-lab/tree/feat/aica005-django-codespaces-lab");
+  await expect(launch).toHaveAttribute("target", "_blank");
+  await expect(launch).toBeEnabled();
+  await page.context().route("https://codespaces.new/**", route => route.fulfill({ status: 200, body: "Codespaces launch destination" }));
+  const [launchPopup] = await Promise.all([page.waitForEvent("popup"), launch.click()]);
+  await expect(launchPopup.locator("body")).toHaveText("Codespaces launch destination");
+  await expect(launchPopup).toHaveURL("https://codespaces.new/mmontielpz/ai-coding-agent-lab/tree/feat/aica005-django-codespaces-lab");
+  await launchPopup.close();
   await expect(page.locator('[data-diagram="dependency"]')).toBeVisible();
   await expect(page.locator('[data-diagram="agent"]')).toBeVisible();
   await expect(page.locator('[data-diagram="workflow"]')).toBeVisible();
@@ -128,7 +134,7 @@ test("Writing discovery and essential lesson remain readable without JavaScript"
   await expect(page.getByText("Preserves dependency")).toBeVisible();
   await expect(page.getByText("Input / output tokens")).toBeVisible();
   await expect(page.locator("code").filter({ hasText: "TASK.md" })).toBeVisible();
-  await expect(page.getByText("Hands-on environment: Pending setup")).toBeVisible();
+  await expect(page.getByText("Hands-on environment: Ready to launch")).toBeVisible();
   await expect(promptText(page)).toHaveValue(/Context strategy — Targeted/);
   await page.getByText("Example evidence checkpoint before a patch").click();
   await expect(page.getByText("Next retrieval:", { exact: false })).toBeVisible();

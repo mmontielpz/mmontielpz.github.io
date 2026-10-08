@@ -117,7 +117,8 @@
 .githubHeading { display: flex; align-items: center; gap: .55rem; color: var(--accent); font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
 .comingNext h3 { margin: .4rem 0 .6rem; font-size: 1.45rem; }
 .comingNext p { margin: 0 0 1rem; color: var(--muted); font-size: .88rem; }
-.pendingLaunch { display: block; width: 100%; margin: .8rem 0 .4rem; padding: .75rem 1rem; border: 1px solid var(--accent); border-radius: .15rem; background: var(--accent); color: #122027; font: inherit; font-size: .9rem; font-weight: 800; opacity: .55; cursor: not-allowed; }
+.launchLink { display: block; width: 100%; margin: .8rem 0 .4rem; padding: .75rem 1rem; border: 1px solid var(--accent); border-radius: .15rem; background: var(--accent); color: #122027; font: inherit; font-size: .9rem; font-weight: 800; text-align: center; text-decoration: none; }
+.launchLink:hover, .launchLink:focus-visible { background: #b9e3e2; outline: 2px solid #fff; outline-offset: 2px; }
 .comingNext .readiness { margin-bottom: 1rem; font-size: .78rem; }
 .comingNext a { font-size: .84rem; font-weight: 700; }
 .comingNext h4 { margin: 1.15rem 0 .4rem; font-size: .88rem; }
