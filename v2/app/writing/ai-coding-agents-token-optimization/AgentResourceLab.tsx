@@ -65,7 +65,7 @@ function buildPrompt(config: Configuration): string {
 
 In GitHub Copilot Chat Agent mode, use the prepared Codespaces execution repository only after confirming its checkout is at ${workload.base}. Original issue: ${workload.issue}
 
-Before editing, read TASK.md, AGENT.md, VERIFY.md, and REPORT.md in that repository. These are planned runtime contracts, not files supplied by this learning portal. If any contract, baseline, or required verification command is missing, stop and report the gap rather than improvising.
+Before editing, read TASK.md, AGENT.md, VERIFY.md, and REPORT.md in that repository. These contracts are in the lab repository, not files supplied by this learning portal. If any contract, baseline, or required verification command is missing, stop and report the gap rather than improvising.
 
 Objective: Correct Django widget Media composition so declared JavaScript and CSS dependencies are preserved, shared assets are deduplicated, real cycles are handled, and related widgets do not regress. Do not consult an upstream reference patch while producing the candidate.
 
@@ -169,7 +169,7 @@ export default function AgentResourceLab() {
         <p>No resource totals or outcome predictions are generated here.</p>
       </aside>
     </div>
-    <div id="prompt-panel" className={styles.promptPanel}><div className={styles.promptHeading}><div><span className={styles.kicker}>COPYABLE HANDOFF</span><h3>Generated execution prompt</h3><p>For the future prepared repository. It references all four planned contracts and changes with your selections.</p></div><div className={styles.promptActions}><button type="button" className="button button-primary" onClick={copyPrompt} disabled={!ready}>Copy prompt</button><button type="button" onClick={downloadPrompt} disabled={!ready}>Download prompt</button></div></div><textarea ref={promptRef} aria-label="Generated execution prompt" readOnly value={prompt} rows={18} spellCheck={false} /><p className={styles.copyStatus} role="status" aria-live="polite">{copyStatus || "Review the policy before copying it into a future agent session. You can also select this text manually."}</p></div>
+    <div id="prompt-panel" className={styles.promptPanel}><div className={styles.promptHeading}><div><span className={styles.kicker}>COPYABLE HANDOFF</span><h3>Generated execution prompt</h3><p>For a configurable practice run in the separate Codespaces lab. The controlled A/B comparison uses the fixed requests linked below.</p></div><div className={styles.promptActions}><button type="button" className="button button-primary" onClick={copyPrompt} disabled={!ready}>Copy prompt</button><button type="button" onClick={downloadPrompt} disabled={!ready}>Download prompt</button></div></div><textarea ref={promptRef} aria-label="Generated execution prompt" readOnly value={prompt} rows={18} spellCheck={false} /><p className={styles.copyStatus} role="status" aria-live="polite">{copyStatus || "Review the policy before copying it into Copilot Agent for a separate practice run. You can also select this text manually."}</p></div>
     <noscript><p className={styles.note}>Enable JavaScript to change the policy or use the copy button. The default prompt remains readable and can be selected manually.</p></noscript>
   </section>;
 }
