@@ -68,6 +68,13 @@
 .detail summary { padding: .8rem 1rem; cursor: pointer; font-weight: 600; }
 .detail summary:hover { color: var(--accent); }
 .detail p { margin: 0; padding: 0 1rem 1rem; color: var(--muted); font-size: .85rem; }
+.abDiagram { display: grid; gap: .55rem; margin-top: .8rem; }
+.abDiagram > p, .abDiagram > div > p { margin: 0; padding: .8rem 1rem; border: 1px solid var(--border); background: #161e22; }
+.abDiagram > p { border-color: var(--accent); }
+.abDiagram > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
+.abDiagram strong, .abDiagram span { display: block; }
+.abDiagram strong { color: var(--accent); font-size: .83rem; }
+.abDiagram span { margin-top: .2rem; color: var(--muted); font-size: .82rem; }
 .practiceRow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
 .practiceRows { display: grid; gap: .45rem; }
 .practiceRow p { margin: 0; padding: .75rem .85rem; border: 1px solid var(--border); background: #161e22; font-size: .85rem; }
@@ -129,6 +136,17 @@
 .handoffSteps { display: grid; gap: .4rem; margin: 0; padding: 0; list-style: none; counter-reset: handoff; }
 .handoffSteps li { display: flex; align-items: center; gap: .8rem; padding: .5rem .8rem; border: 1px solid var(--border); background: #161e22; font-size: .85rem; counter-increment: handoff; }
 .handoffSteps li::before { content: counter(handoff, decimal-leading-zero); color: var(--accent); font-size: .72rem; font-weight: 700; }
+.calculator { padding: 1.1rem; border: 1px solid var(--accent); background: #151f24; }
+.hypothetical { margin: 0 0 1rem; color: var(--accent); font-size: .72rem; font-weight: 800; letter-spacing: .07em; }
+.calculatorInputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+.calculatorInputs > div { display: grid; gap: .35rem; padding: 1rem; border: 1px solid var(--border); background: #10171b; }
+.calculatorInputs label { color: var(--muted); font-size: .82rem; font-weight: 700; }
+.calculatorInputs input, .calculatorInputs select { width: 100%; min-width: 0; margin-bottom: .5rem; padding: .6rem; border: 1px solid var(--border); border-radius: .15rem; background: #1b2b31; color: var(--foreground); font: inherit; }
+.calculatorInputs input:focus-visible, .calculatorInputs select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.calculatorResult { margin-top: .8rem; padding: 1rem; border-left: 3px solid var(--accent); background: #1b2b31; }
+.calculatorResult strong { color: var(--accent); font-size: 1.15rem; }
+.calculatorResult p { margin: .3rem 0 0; color: var(--muted); font-size: .85rem; }
+.formula { margin: .85rem 0 0; color: var(--muted); font-size: .82rem; }
 .checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
 .checks details { min-width: 0; border: 1px solid var(--border); background: #161e22; }
 .checks summary { padding: 1rem; cursor: pointer; font-weight: 600; font-size: .88rem; }
@@ -148,7 +166,7 @@
   .section { padding-block: 2rem 2.3rem; }
   .assetRow { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
   .assetRow strong { grid-column: auto; }
-  .criteria, .glossary, .contractGrid, .checks, .stage dl { grid-template-columns: minmax(0, 1fr); }
+  .criteria, .glossary, .contractGrid, .checks, .stage dl, .abDiagram > div, .calculatorInputs { grid-template-columns: minmax(0, 1fr); }
   .systemFlow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .systemFlow li:nth-child(3)::after { display: block; }
   .systemFlow li:nth-child(even)::after { display: none; }

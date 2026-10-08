@@ -24,9 +24,10 @@ test("challenge, dependency diagram, workflow, and Codespaces handoff are clear"
   await expect(page.getByText("Preserves dependency")).toBeVisible();
   await expect(page.getByText("color-picker.js is independent", { exact: false })).toBeVisible();
   await expect(page.getByRole("list", { name: "Engineering system" }).locator("li")).toHaveCount(6);
-  await expect(page.locator("h3").filter({ hasText: /^(Discover|Plan|Execute|Verify|Report)$/ })).toHaveCount(5);
+  await expect(page.locator("h3").filter({ hasText: /^(Define|Execute|Measure|Verify|Compare)$/ })).toHaveCount(5);
+  await expect(page.getByRole("group", { name: "Controlled A and B experiment" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "GitHub Codespaces Laboratory" })).toBeVisible();
-  await expect(page.getByText("Hands-on environment: Ready to launch")).toBeVisible();
+  await expect(page.getByText("Hands-on environment: Available to repository members")).toBeVisible();
   const launch = page.getByRole("link", { name: /Launch GitHub Codespaces Lab/ });
   await expect(launch).toHaveAttribute("href", "https://codespaces.new/mmontielpz/ai-coding-agent-lab/tree/feat/aica005-django-codespaces-lab");
   await expect(launch).toHaveAttribute("target", "_blank");
@@ -103,7 +104,7 @@ test("all three policies update summary, trade-offs, generated prompt, and clipb
 
   const expected = await prompt.inputValue();
   await page.getByRole("button", { name: "Copy prompt" }).click();
-  await expect(page.locator('[aria-live="polite"]')).toHaveText("Prompt copied to clipboard.");
+  await expect(page.locator('#prompt-panel [aria-live="polite"]')).toHaveText("Prompt copied to clipboard.");
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(expected);
   await page.context().setOffline(false);
   await page.reload();
@@ -137,7 +138,7 @@ test("Writing discovery and essential lesson remain readable without JavaScript"
   await expect(page.getByText("Preserves dependency")).toBeVisible();
   await expect(page.getByText("Input / output tokens")).toBeVisible();
   await expect(page.locator("code").filter({ hasText: "TASK.md" })).toBeVisible();
-  await expect(page.getByText("Hands-on environment: Ready to launch")).toBeVisible();
+  await expect(page.getByText("Hands-on environment: Available to repository members")).toBeVisible();
   await expect(promptText(page)).toHaveValue(/Context strategy — Targeted/);
   await page.getByText("Example evidence checkpoint before a patch").click();
   await expect(page.getByText("Next retrieval:", { exact: false })).toBeVisible();
@@ -146,6 +147,20 @@ test("Writing discovery and essential lesson remain readable without JavaScript"
   await noOverflow(page);
   await page.screenshot({ path: info.outputPath("learning-portal-no-js.png"), fullPage: true });
   await context.close();
+});
+
+test("hypothetical token calculator separates resource difference from verification", async ({ page }) => {
+  await page.goto(route);
+  await expect(page.getByText("HYPOTHETICAL EXAMPLE", { exact: false })).toBeVisible();
+  await expect(page.getByText("25.0% fewer tokens in B")).toBeVisible();
+  await expect(page.getByText("At least one hypothetical run failed verification", { exact: false })).toBeVisible();
+  await page.getByLabel("Independent verification").last().selectOption("PASS");
+  await expect(page.getByText("Both hypothetical runs passed verification", { exact: false })).toBeVisible();
+  await page.getByRole("spinbutton", { name: "Experiment B · total tokens" }).fill("1200");
+  await expect(page.getByText("20.0% more tokens in B", { exact: false })).toBeVisible();
+  await page.getByRole("spinbutton", { name: "Experiment A · total tokens" }).fill("0");
+  await expect(page.getByText("No percentage is calculated.")).toBeVisible();
+  await noOverflow(page);
 });
 
 test("blocked clipboard selects the exact prompt and text export remains available", async ({ page }) => {
@@ -160,7 +175,7 @@ test("blocked clipboard selects the exact prompt and text export remains availab
   await page.getByRole("radio", { name: "Broad" }).check();
   const expected = await promptText(page).inputValue();
   await page.getByRole("button", { name: "Copy prompt" }).click();
-  await expect(page.locator('[aria-live="polite"]')).toContainText("press Ctrl+C or Cmd+C");
+  await expect(page.locator('#prompt-panel [aria-live="polite"]')).toContainText("press Ctrl+C or Cmd+C");
   expect(await promptText(page).evaluate((element: HTMLTextAreaElement) => element.value.slice(element.selectionStart, element.selectionEnd))).toBe(expected);
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download prompt" }).click();
