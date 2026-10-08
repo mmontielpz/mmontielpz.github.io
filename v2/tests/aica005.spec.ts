@@ -27,7 +27,8 @@ test("challenge, dependency diagram, workflow, and planned handoff are clear", a
   await expect(page.locator("h3").filter({ hasText: /^(Discover|Plan|Execute|Verify|Report)$/ })).toHaveCount(5);
   await expect(page.getByRole("heading", { name: "GitHub Codespaces Laboratory" })).toBeVisible();
   await expect(page.getByText("Hands-on environment: Pending setup")).toBeVisible();
-  await expect(page.getByText("No validated launch destination is available yet.", { exact: false })).toBeVisible();
+  await expect(page.getByText("Pending fresh Codespace qualification.", { exact: false })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Launch GitHub Codespaces Lab" })).toBeDisabled();
   await expect(page.locator('a[href*="codespaces/new"]')).toHaveCount(0);
   await expect(page.locator('[data-diagram="dependency"]')).toBeVisible();
   await expect(page.locator('[data-diagram="agent"]')).toBeVisible();

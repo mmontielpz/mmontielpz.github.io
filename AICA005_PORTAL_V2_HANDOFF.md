@@ -30,7 +30,7 @@ Playwright covers every policy, exact prompt changes, reload/reset, secure clipb
 
 ## Limits and Codespaces dependency
 
-The Codespaces laboratory is **Pending setup**. A runtime repository, pinned checkout, four contracts, verification commands, participant Copilot access, and a validated launch destination must be qualified before adding a link. The portal makes no claim about agent outcomes, token telemetry, cost, or Copilot availability. LAN HTTP is an insecure browser origin, so automatic clipboard access may be unavailable; manual selection and text download remain available. Browser storage may be disabled; in that case policy changes last for the page session only.
+The Codespaces laboratory is **Pending fresh Codespace qualification**. The existing `ai-coding-agent-lab` repository now has a Draft Django workshop branch with the pinned checkout, four contracts, and verification scripts. A local devcontainer boot passed, but a fresh GitHub Codespace and participant Copilot access have not been observed. The portal therefore shows an inactive launch control and makes no claim about agent outcomes, token telemetry, cost, or Copilot availability. LAN HTTP is an insecure browser origin, so automatic clipboard access may be unavailable; manual selection and text download remain available. Browser storage may be disabled; in that case policy changes last for the page session only.
 
 The portal Draft PR targets `release/v2`, which contains the independently qualified V2 foundation from Draft PR #7. The feature branch merges that foundation without rewriting history and builds from a clean checkout. Neither Draft PR has been merged into `main`, which remains the Hugo production source.
 
