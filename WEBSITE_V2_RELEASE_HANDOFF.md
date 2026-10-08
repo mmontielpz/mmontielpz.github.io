@@ -3,9 +3,11 @@
 ## Branch architecture
 
 - `main` remains the Hugo production source. Its existing Pages workflow is unchanged.
-- `feat/website-v2-foundation` / [Draft PR #7](https://github.com/mmontielpz/mmontielpz.github.io/pull/7) contains the independently buildable Next.js shell, six route shells, tooling, and foundation tests. It excludes AICA005 and the unreviewed research case studies.
+- `feat/website-v2-foundation` / [Draft PR #7](https://github.com/mmontielpz/mmontielpz.github.io/pull/7) contains the independently buildable Next.js shell, six route shells, tooling, and foundation tests. It excludes AICA005 and the separate research case studies.
 - `release/v2` is the non-production integration base at the qualified foundation commit, plus this handoff.
 - `feat/aica005-learning-portal-v2` / [Draft PR #6](https://github.com/mmontielpz/mmontielpz.github.io/pull/6) merges the foundation without rewriting history and targets `release/v2`. Its comparison should contain only the AICA005 portal, Writing entry, related asset/configuration, tests, and handoff. The PR stays Draft.
+
+The original local `main` is one documentation-only commit (`83ae6b5`) ahead of `origin/main` and has unrelated working changes. Both PR branches were based on `origin/main`; the original worktree and its changes were left untouched.
 
 ## Qualification
 
